@@ -1,0 +1,55 @@
+services:
+  user:
+    container_name: user
+    image: user
+    build:
+      context: ./user
+      dockerfile: Dockerfile.user
+    ports:
+      - "9000:5000"
+    networks:
+      - dhullipa
+  products:
+    container_name: products
+    image : products
+    build:
+      context: ./products
+      dockerfile: Dockerfile.products
+    ports:
+      - "9001:5000"
+    networks:
+      - dhullipa
+  search:
+    container_name: search
+    image: search
+    build:
+      context: ./search
+      dockerfile: Dockerfile.search
+    ports:
+      - "9002:5000"
+    networks:
+      - dhullipa
+  orders:
+    container_name: orders
+    image: orders
+    build:
+      context: ./orders
+      dockerfile: Dockerfile.orders
+    ports:
+      - "9003:5000"
+    networks:
+      - dhullipa
+  logs:
+    container_name: logs
+    image: logs
+    build:
+      context: ./logs
+      dockerfile: Dockerfile.logs
+    ports:
+      - "9004:5000"
+    networks:
+      - dhullipa
+
+networks:
+  dhullipa:
+    driver: bridge
